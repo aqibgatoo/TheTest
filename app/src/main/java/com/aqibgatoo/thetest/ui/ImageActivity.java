@@ -23,6 +23,7 @@ public class ImageActivity extends ActionBarActivity {
         mKinveyClient = TestApplication.getInstance();
         if (!mKinveyClient.user().isUserLoggedIn()) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
 
