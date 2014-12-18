@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    tools:context="com.aqibgatoo.thetest.ui.SignUpActivity">
+
+    <EditText
+        android:layout_marginTop="60dp"
+        android:id="@+id/id_username"
+        android:hint="@string/string_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="@string/string_password"
+        android:id="@+id/id_password"
+        android:layout_below="@+id/id_username"
+        android:layout_width="match_parent"
+        android:inputType="textWebPassword"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="@string/string_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:id="@+id/id_email"
+        android:layout_below="@+id/id_password" />
+
+    <Button
+        android:layout_below="@+id/id_email"
+        android:id="@+id/id_signup"
+        android:text="@string/string_signup_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

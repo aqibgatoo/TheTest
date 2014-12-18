@@ -1,19 +1,31 @@
 package com.aqibgatoo.thetest.ui;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.aqibgatoo.thetest.R;
+import com.aqibgatoo.thetest.controller.TestApplication;
+import com.kinvey.android.Client;
 
 
 public class ImageActivity extends ActionBarActivity {
+
+    private Client mKinveyClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
+
+        mKinveyClient = TestApplication.getInstance();
+        if (!mKinveyClient.user().isUserLoggedIn()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
+
     }
 
 
@@ -33,6 +45,14 @@ public class ImageActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.action_logout) {
+
+            mKinveyClient.user().logout().execute();
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
             return true;
         }
 
