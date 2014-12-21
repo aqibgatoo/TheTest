@@ -14,5 +14,7 @@
     <string name="string_login_button_label">Login</string>
     <string name="string_action_logout">Logout</string>
     <string name="string_new_signup">Don\'t have Account Sign up!</string>
+    <string name="action_caputre_label">Capture</string>
+    <string name="string_getitems">GET</string>
 
 </resources>
