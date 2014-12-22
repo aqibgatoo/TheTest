@@ -3,19 +3,15 @@ package com.aqibgatoo.thetest.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 
 import com.aqibgatoo.thetest.controller.TestApplication;
 import com.kinvey.android.AsyncAppData;
 import com.kinvey.android.Client;
-import com.kinvey.android.callback.KinveyListCallback;
 import com.kinvey.java.core.KinveyClientCallback;
 import com.kinvey.java.core.MediaHttpUploader;
 import com.kinvey.java.core.UploaderProgressListener;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by Aqib on 12/20/2014.
@@ -26,14 +22,12 @@ public class EntitySource {
     private static EntitySource mEntitySource = null;
     private Client mKinveyClient;
     private Context mContext;
-    private ArrayList<ImageEntity> mImageEntities;
     private ImageEntity mImageEntity;
     private Bitmap bitmap;
 
     private EntitySource(Context context) {
         mContext = context;
-        mImageEntities = new ArrayList<>();
-        mKinveyClient = TestApplication.getInstance();
+        mKinveyClient = TestApplication.getClientInstance();
 
     }
 
@@ -82,30 +76,6 @@ public class EntitySource {
     }
 
 
-    public void loadImageEntities(final ArrayAdapter arrayAdapter) {
-
-
-        AsyncAppData<ImageEntity> events = mKinveyClient.appData("events", ImageEntity.class);
-        events.get(new KinveyListCallback<ImageEntity>() {
-            @Override
-            public void onSuccess(ImageEntity[] imageEntities) {
-                mImageEntities.addAll(Arrays.asList(imageEntities));
-                arrayAdapter.clear();
-                arrayAdapter.addAll(mImageEntities);
-                arrayAdapter.notifyDataSetChanged();
-//                loadLinkedData(mImageEntities.get(0).getId(), arrayAdapter);
-                Log.d(TAG, Arrays.toString(imageEntities));
-                Log.d(TAG, "Fetched result " + mImageEntities.get(0).getId());
-            }
-
-            @Override
-            public void onFailure(Throwable throwable) {
-                Log.d(TAG, "Fail " + throwable.getMessage());
-            }
-        });
-
-    }
-
     public void saveLinkedEntity(ImageEntity entity) {
 
         mKinveyClient.linkedData("events", ImageEntity.class).save(entity, new KinveyClientCallback<ImageEntity>() {
@@ -138,7 +108,6 @@ public class EntitySource {
             }
         });
     }
-
 
 
 }

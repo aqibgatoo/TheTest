@@ -39,7 +39,7 @@ public class SignUpActivity extends ActionBarActivity implements View.OnClickLis
         mProgressDialog.setMessage("please wait...");
         mProgressDialog.setIndeterminate(true);
 
-        mKinveyClient = TestApplication.getInstance();
+        mKinveyClient = TestApplication.getClientInstance();
 
         mSignUpButton.setOnClickListener(this);
 

@@ -9,8 +9,8 @@ import com.kinvey.android.Client;
  */
 public class TestApplication extends Application {
 
-    private static final String APP_KEY = "YOUR_APPKEY";
-    private static final String APP_SECRET = "YOUR_APPSECRET";
+    private static final String APP_KEY = "YOUR_APP_KEY";
+    private static final String APP_SECRET = "YOUR_APP_SECRET";
 
     private static Client mKinveyClient;
 
@@ -27,7 +27,7 @@ public class TestApplication extends Application {
 
     }
 
-    public static Client getInstance() {
+    public static Client getClientInstance() {
 
         return mKinveyClient;
 

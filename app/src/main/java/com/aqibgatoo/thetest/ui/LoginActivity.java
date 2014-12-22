@@ -31,7 +31,7 @@ public class LoginActivity extends ActionBarActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mKinveyClient = TestApplication.getInstance();
+        mKinveyClient = TestApplication.getClientInstance();
         mUserNameField = (EditText) findViewById(R.id.id_username);
         mPasswordField = (EditText) findViewById(R.id.id_password);
         mLoginButton = (Button) findViewById(R.id.id_login);
